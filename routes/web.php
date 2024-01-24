@@ -1,8 +1,11 @@
 <?php
 
+use App\Models\Pelanggan;
 use Illuminate\Support\Facades\Route;
 use App\Models\Buku;
 use App\Http\Controllers\BukuController;
+use App\Http\Controllers\PelangganController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -46,3 +49,16 @@ Route::get('/buku/edit', function () {
 Route::get('/buku/create', function () {
     return view('table_buku.create');
 });
+
+Route::resource('table_pelanggan', PelangganController::class);
+
+Route::get('/pelanggan/index', function () {
+    return view('table_pelanggan.index');
+});
+Route::get('/pelanggan/edit', function () {
+    return view('table_pelanggan.edit');
+});
+Route::get('/pelanggan/create', function () {
+    return view('table_pelanggan.create');
+});
+

@@ -1,7 +1,7 @@
 <?php
-    use App\Models\Buku;
+    use App\Models\Pelanggan;
 
-    $table_buku = Buku::all();
+    $table_pelanggan = Pelanggan::all();
 ?>
 
 <!doctype html>
@@ -9,13 +9,13 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Daftar Buku</title>
+    <title>Daftar Pelanggan</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
   </head>
   <body>
     <div class="container mt-5">
         <h1 class="text-center mb-5">Daftar Buku</h1>
-        <a href="{{ route('table_buku.create') }}" class="btn btn-primary mb-3">Tambah Buku</a>
+        <a href="{{ route('table_pelanggan.create') }}" class="btn btn-primary mb-3">Tambah Buku</a>
         @if (session('success'))
             <div class="alert alert-success" role="alert">
                 {{ session('success') }}
@@ -27,30 +27,22 @@
                 <table class="table">
                     <thead>
                         <th>NO</th>
-                        <th>JUDUL</th>
-                        <th>PENGARANG</th>
-                        <th>PENERBIT</th>
-                        <th>TAHUN TERBIT</th>
-                        <th>HARGA</th>
-                        <th>JUMLAH STOK</th>
-                        <th>KATEGORI</th>
+                        <th>NAMA PELANGGAN</th>
+                        <th>ALAMAT</th>
+                        <th>NOMOR TELEPON</th>
                     </thead>
                     <tbody>
-                        @foreach ($table_buku as $hasil)
+                        @foreach ($table_pelanggan as $hasil)
                             <tr>
                                 <td>{{ $hasil->id }}</td>
-                                <td>{{ $hasil->Judul }}</td>
-                                <td>{{ $hasil->Penerbit }}</td>
-                                <td>{{ $hasil->Pengarang }}</td>
-                                <td>{{ $hasil->Tahun_Terbit }}</td>
-                                <td>{{ $hasil->Harga }}</td>
-                                <td>{{ $hasil->Harga }}</td>
-                                <td>{{ $hasil->Kategori }}</td>
+                                <td>{{ $hasil->Nama_Pelanggan }}</td>
+                                <td>{{ $hasil->Alamat }}</td>
+                                <td>{{ $hasil->Nomor_Telepon }}</td>
                                 <td>
-                                    <form action="{{ route('table_buku.destroy', $hasil->id) }}" method="POST">
+                                    <form action="{{ route('table_pelanggan.destroy', $hasil->id) }}" method="POST">
                                         @csrf
                                         @method('delete')
-                                        <a href="{{ route('table_buku.edit', $hasil->id) }}" class="btn btn-success btn-sm">Edit</a>
+                                        <a href="{{ route('table_pelanggan.edit', $hasil->id) }}" class="btn btn-success btn-sm">Edit</a>
                                         <button class="btn btn-danger btn-sm">Hapus</button>
                                     </form>
                                 </td>
